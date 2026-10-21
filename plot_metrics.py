@@ -29,8 +29,20 @@ def setup_style():
     })
 
 
+def _find_file(filename, alt_dirs=None):
+    if os.path.exists(filename):
+        return filename
+    alt_dirs = alt_dirs or ["models", "data"]
+    for d in alt_dirs:
+        p = os.path.join(d, filename)
+        if os.path.exists(p):
+            return p
+    return filename
+
+
 def plot_training_curves(metrics_path="training_metrics.json", output_dir="figures"):
     os.makedirs(output_dir, exist_ok=True)
+    metrics_path = _find_file(metrics_path, ["models"])
     if not os.path.exists(metrics_path):
         print(f"Warning: {metrics_path} not found. Skipping training curves.")
         return
@@ -76,6 +88,7 @@ def plot_training_curves(metrics_path="training_metrics.json", output_dir="figur
 
 def plot_weight_trajectories(metrics_path="training_metrics.json", output_dir="figures"):
     os.makedirs(output_dir, exist_ok=True)
+    metrics_path = _find_file(metrics_path, ["models"])
     if not os.path.exists(metrics_path):
         print(f"Warning: {metrics_path} not found. Skipping weight trajectories.")
         return
@@ -123,6 +136,7 @@ def plot_weight_trajectories(metrics_path="training_metrics.json", output_dir="f
 
 def plot_baseline_comparison(eval_path="evaluation_results.json", output_dir="figures"):
     os.makedirs(output_dir, exist_ok=True)
+    eval_path = _find_file(eval_path, ["data"])
     if not os.path.exists(eval_path):
         print(f"Warning: {eval_path} not found. Skipping baseline comparison.")
         return

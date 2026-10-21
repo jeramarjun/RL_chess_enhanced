@@ -116,33 +116,43 @@ The trained RL-Enhanced engine was evaluated against four distinct baseline arch
 
 ```
 Chess_RL/
-├── config.py                 # Board constants, piece representations, PST tables, RL hyperparameters
-├── board.py                  # Standard 8x8 Chess rules wrapper using python-chess (tournament API)
-├── features.py               # 71-dimensional state feature extractor phi(s)
-├── rl_value_net.py           # LinearValueFunction and NeuralValueNetwork (PyTorch)
-├── td_learning.py            # TD-Leaf(lambda) self-play training loop with eligibility traces
-├── rl_player.py              # Tournament-ready RL-Enhanced Alpha-Beta chess player
-├── chess_rl_agent.py         # Course submission agent wrapper (ChessRLAgent / B24CM_RL)
-├── baselines.py              # Random, Greedy, Untrained, and Heuristic baseline agents
-├── train.py                  # CLI training script for self-play RL training
-├── evaluate.py               # Automated tournament benchmark evaluation runner
-├── plot_metrics.py           # Publication-quality figure generation script
-├── game_runner.py            # Interactive Blitz match runner with Unicode board display
-├── test_suite.py             # Complete unit test suite (15 test cases)
-├── requirements.txt          # Python dependencies
-├── trained_weights.json      # Final trained RL evaluation weights
-├── training_metrics.json     # Saved training loss, plies, and weight history
-├── evaluation_results.json   # Systematic tournament results vs all baselines
-├── checkpoints/              # Checkpoint weights saved during self-play training
-├── figures/                  # Publication-quality generated figures
+├── src/                          # Core engine & learning modules
+│   ├── __init__.py               # Source package initializer
+│   ├── config.py                 # Board constants, piece values, PSTs, hyperparameters
+│   ├── board.py                  # Standard 8x8 Chess rules wrapper using python-chess
+│   ├── features.py               # 71-dimensional state feature extractor phi(s)
+│   ├── rl_value_net.py           # Linear & neural value function representations
+│   ├── td_learning.py            # TD-Leaf(lambda) self-play training algorithm
+│   ├── rl_player.py              # Iterative-deepening Alpha-Beta search player
+│   ├── baselines.py              # Random, Greedy, Untrained, and Heuristic players
+│   └── game_runner.py            # Blitz match runner with Unicode board display
+├── models/                       # Trained model weights and checkpoints
+│   ├── trained_weights.json      # Final learned evaluation weights
+│   ├── training_metrics.json     # Saved training loss, plies, and weight history
+│   └── checkpoints/              # Multi-episode snapshot weights
+├── data/                         # Benchmark & tournament data
+│   └── evaluation_results.json   # Systematic tournament results vs all baselines
+├── figures/                      # High-resolution publication plots
 │   ├── training_curves.png
 │   ├── weight_trajectories.png
 │   ├── baseline_comparison.png
 │   └── search_efficiency.png
-└── report/                   # 2-Page Descriptive Report deliverables
-    ├── report.tex            # IEEE two-column LaTeX source code
-    ├── generate_report_pdf.py # ReportLab PDF generator script
-    └── RL_Chess_Engine_Report.pdf # Final compiled 2-page report PDF
+├── report/                       # 2-Page Descriptive Report deliverables
+│   ├── RL_Chess_Engine_Report.pdf # Final compiled 2-page report PDF
+│   ├── report.tex                # IEEE two-column LaTeX source code
+│   └── generate_report_pdf.py    # ReportLab PDF generator script
+├── tests/                        # Automated unit tests
+│   ├── __init__.py
+│   └── test_suite.py             # 15-test unit test suite
+├── train.py                      # Root entry point: Model training CLI
+├── evaluate.py                   # Root entry point: Baseline benchmarking CLI
+├── plot_metrics.py               # Root entry point: Visualization generator
+├── game_runner.py                # Root entry point: Interactive blitz match runner
+├── chess_rl_agent.py             # Course submission wrapper (tournament import)
+├── b24cm1034.py                  # Roll number agent wrapper alias
+├── requirements.txt              # Python dependencies
+├── .gitignore                    # Git ignore file
+└── README.md                     # Comprehensive documentation & reproduction guide
 ```
 
 ---
@@ -189,7 +199,7 @@ Outputs high-resolution charts in `figures/`.
 ### 6. Run Unit Tests
 Verify board mechanics, feature extraction, TD updates, and Alpha-Beta search soundness:
 ```bash
-python -m unittest test_suite.py
+python -m unittest discover tests
 ```
 
 ### 7. Compile the 2-Page Descriptive Report PDF

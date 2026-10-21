@@ -6,7 +6,13 @@ Runs TD-Leaf(lambda) self-play training loop, logs metrics, and saves weights.
 import argparse
 import json
 import os
+import sys
 import time
+
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_src_dir = os.path.join(_current_dir, "src")
+if _src_dir not in sys.path:
+    sys.path.insert(0, _src_dir)
 
 from config import (
     DEFAULT_GAMMA,

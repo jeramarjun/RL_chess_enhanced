@@ -13,7 +13,13 @@ import argparse
 import json
 import math
 import os
+import sys
 import time
+
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+_src_dir = os.path.join(_current_dir, "src")
+if _src_dir not in sys.path:
+    sys.path.insert(0, _src_dir)
 
 from board import GameEngine, Move
 from config import EMPTY_SQUARE, BASE_PIECE_VALUES
