@@ -215,7 +215,7 @@ Output: `report/RL_Chess_Engine_Report.pdf`.
 
 - **Course:** AI Course: Assignment 2 &mdash; Real-Life Use Cases of Reinforcement Learning (Mini-Project)
 - **Institution:** Indian Institute of Technology Jodhpur (IITJ)
-- **Team Submission Roll Numbers:** B24CM1034, B24CM1084
+- **Team Submission Roll Numbers:** B24CM1034, B24CM1037
 - **Instructors / TAs:**
   - Shubham Bagwari (`p22cs201@iitj.ac.in`)
   - Divyaansh Mertia (`p25cs0004@iitj.ac.in`)
