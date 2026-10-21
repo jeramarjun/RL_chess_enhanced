@@ -1,0 +1,62 @@
+{
+  "vs_random": {
+    "opponent": "Random Baseline (P25CS0004)",
+    "games": 8,
+    "wins": 2,
+    "draws": 6,
+    "losses": 0,
+    "win_rate": 25.0,
+    "draw_rate": 75.0,
+    "loss_rate": 0.0,
+    "score": 0.625,
+    "elo_diff": 88.7,
+    "avg_plies": 55.125,
+    "avg_nodes_per_move": 3350.7,
+    "avg_time_per_move_ms": 1246.20235318064
+  },
+  "vs_greedy": {
+    "opponent": "Greedy Material Player",
+    "games": 8,
+    "wins": 7,
+    "draws": 1,
+    "losses": 0,
+    "win_rate": 87.5,
+    "draw_rate": 12.5,
+    "loss_rate": 0.0,
+    "score": 0.9375,
+    "elo_diff": 470.4,
+    "avg_plies": 21.75,
+    "avg_nodes_per_move": 2718.67816091954,
+    "avg_time_per_move_ms": 1006.8927517297259
+  },
+  "vs_untrained": {
+    "opponent": "Untrained RL Agent (theta_0)",
+    "games": 8,
+    "wins": 6,
+    "draws": 2,
+    "losses": 0,
+    "win_rate": 75.0,
+    "draw_rate": 25.0,
+    "loss_rate": 0.0,
+    "score": 0.875,
+    "elo_diff": 338.0,
+    "avg_plies": 27.0,
+    "avg_nodes_per_move": 1859.6574074074074,
+    "avg_time_per_move_ms": 5462.170369452064
+  },
+  "vs_heuristic": {
+    "opponent": "Heuristic Alpha-Beta Player",
+    "games": 8,
+    "wins": 1,
+    "draws": 7,
+    "losses": 0,
+    "win_rate": 12.5,
+    "draw_rate": 87.5,
+    "loss_rate": 0.0,
+    "score": 0.5625,
+    "elo_diff": 43.7,
+    "avg_plies": 44.125,
+    "avg_nodes_per_move": 2648.8238636363635,
+    "avg_time_per_move_ms": 1051.0547301098334
+  }
+}
