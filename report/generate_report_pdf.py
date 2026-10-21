@@ -20,7 +20,15 @@ from reportlab.platypus import (
 )
 
 
-def create_two_page_report(output_pdf="RL_Chess_Engine_Report.pdf", figures_dir="../figures"):
+def create_two_page_report(output_pdf=None, figures_dir=None):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(script_dir, ".."))
+
+    if figures_dir is None:
+        figures_dir = os.path.join(project_root, "figures")
+    if output_pdf is None:
+        output_pdf = os.path.join(script_dir, "RL_Chess_Engine_Report.pdf")
+
     doc = BaseDocTemplate(
         output_pdf,
         pagesize=letter,
@@ -280,6 +288,10 @@ def create_two_page_report(output_pdf="RL_Chess_Engine_Report.pdf", figures_dir=
         story.append(Paragraph(r, ParagraphStyle("Ref", fontName="Times-Roman", fontSize=6.5, leading=7.8, spaceAfter=2)))
 
     doc.build(story)
+    root_pdf = os.path.join(project_root, "RL_Chess_Engine_Report.pdf")
+    if os.path.abspath(output_pdf) != os.path.abspath(root_pdf):
+        import shutil
+        shutil.copy2(output_pdf, root_pdf)
     print(f"[+] Successfully compiled 2-Page Descriptive Report PDF: {output_pdf}")
 
 
