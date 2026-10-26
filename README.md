@@ -53,7 +53,7 @@ The action space $\mathcal{A}(s)$ is discrete and context-dependent, comprising 
 Terminal rewards reflect true game outcomes from White's perspective:
 $$R_{\text{terminal}}(s) = \begin{cases} +1.0 & \text{if White wins (checkmate)}, \\ -1.0 & \text{if Black wins (checkmate)}, \\ 0.0 & \text{if Draw (stalemate, 50-move rule, threefold repetition, insufficient material)}. \end{cases}$$
 
-To solve the sparse-reward credit assignment challenge over long trajectories (40–80 plies), we incorporate potential-based reward shaping (Ng et al., 1999) with auxiliary tactical signals:
+To provide intermediate feedback during self-play, the implementation uses tactical reward shaping. Captures receive a bonus proportional to the captured piece's value, and check-related events receive a small bonus or penalty depending on the player. The final game outcome is used as the terminal learning target: +1 for a White win, -1 for a Black win, and 0 for a draw. These intermediate rewards are direct tactical bonuses; the implementation does not implement the formal potential-based reward-shaping method.
 $$r_t = R_{\text{terminal}}(s_t) + c_{\text{mat}} \cdot \frac{\Delta \text{Material}}{1000} + c_{\text{check}} \cdot \mathbb{I}(\text{check})$$
 where $c_{\text{mat}} = 0.05$ and $c_{\text{check}} = 0.02$. Potential-based shaping guarantees optimal policy invariance while accelerating TD error convergence.
 
@@ -121,7 +121,7 @@ Chess_RL/
 │   ├── config.py                 # Board constants, piece values, PSTs, hyperparameters
 │   ├── board.py                  # Standard 8x8 Chess rules wrapper using python-chess
 │   ├── features.py               # 71-dimensional state feature extractor phi(s)
-│   ├── rl_value_net.py           # Linear & neural value function representations
+│   ├── rl_value_net.py           # Linear value function used by the TD training pipeline
 │   ├── td_learning.py            # TD-Leaf(lambda) self-play training algorithm
 │   ├── rl_player.py              # Iterative-deepening Alpha-Beta search player
 │   ├── baselines.py              # Random, Greedy, Untrained, and Heuristic players
