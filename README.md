@@ -100,7 +100,7 @@ The trained RL-Enhanced engine was evaluated against four distinct baseline arch
 
 | Opponent Baseline | Type / Role | Win Rate | Draw Rate | Loss Rate | Match Score | $\Delta$Elo |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Random Player** | Uniform random legal play (`P25CS0004` / `P22CS201`) | **25.0%** | 75.0% | **0.0%** | 0.625 | **+88.7** |
+| **Random Player** | Uniform random legal play | **25.0%** | 75.0% | **0.0%** | 0.625 | **+88.7** |
 | **Greedy Material** | 1-ply immediate capture maximization | **87.5%** | 12.5% | **0.0%** | 0.938 | **+470.4** |
 | **Untrained RL ($\boldsymbol{\theta}_0$)** | Same search engine with unlearned weights (Ablation) | **75.0%** | 25.0% | **0.0%** | 0.875 | **+338.0** |
 | **Heuristic Minimax** | Classical Alpha-Beta with fixed handcrafted PSTs | **12.5%** | 87.5% | **0.0%** | 0.562 | **+43.7** |
