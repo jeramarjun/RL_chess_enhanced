@@ -202,14 +202,7 @@ Verify board mechanics, feature extraction, TD updates, and Alpha-Beta search so
 python -m unittest discover tests
 ```
 
-### 7. Compile the 2-Page Descriptive Report PDF
-Generate the exact 2-page submission PDF:
-```bash
-python report/generate_report_pdf.py
-```
-Output: `report/RL_Chess_Engine_Report.pdf`.
 
----
 
 ## 👥 Authors & Academic Metadata
 
